@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+:root {
+    --primary-color: #6c5ce7;
+    --primary-hover: #5b4bc4;
+    --bg-color: #0f172a;
+    --container-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --correct-color: #10b981;
+    --incorrect-color: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: var(--container-bg);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Screens Management */
+.screen {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.screen.active {
+    display: block;
+}
+
+.hide {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.btn {
+    border: none;
+    outline: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    margin-top: 20px;
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.answer-btn {
+    background-color: #334155;
+    color: var(--text-main);
+    text-align: left;
+    padding: 15px 20px;
+    border: 2px solid transparent;
+}
+
+.answer-btn:hover:not(:disabled) {
+    background-color: #475569;
+    border-color: var(--primary-color);
+}
+
+.answer-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.correct {
+    background-color: rgba(16, 185, 129, 0.2);
+    border-color: var(--correct-color);
+    color: var(--correct-color);
+}
+
+.incorrect {
+    background-color: rgba(239, 68, 68, 0.2);
+    border-color: var(--incorrect-color);
+    color: var(--incorrect-color);
+}
+
+/* Quiz Header & Timer */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.timer {
+    background: rgba(108, 92, 231, 0.2);
+    color: #a29bfe;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #334155;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Result Screen */
+.score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(var(--primary-color) 0deg, #334155 0deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    font-size: 2rem;
+    font-weight: 800;
+    position: relative;
+}
+
+.score-circle::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-color: var(--container-bg);
+    border-radius: 50%;
+}
+
+.score-circle span {
+    position: relative;
+    z-index: 10;
+}
+
+.high-score-board {
+    background: #334155;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
